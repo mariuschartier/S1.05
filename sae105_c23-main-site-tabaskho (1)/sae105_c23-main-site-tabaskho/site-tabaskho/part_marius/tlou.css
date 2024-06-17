@@ -1,0 +1,792 @@
+/* Feuille de style Tabas'Kho */
+
+/* Polices */
+
+@font-face {
+    font-family: 'etna-sans';
+    src: url('fonts/etna-free-font-webfont.woff2') format('woff2'),
+        url('fonts/etna-free-font-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'lilita-one';
+    src: url('fonts/lilitaone-regular-webfont.woff2') format('woff2'),
+        url('fonts/lilitaone-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Généralités */
+
+.scrollable {
+    overflow-y: scroll;
+}
+
+body {
+    box-sizing: border-box;
+}
+
+/* Typographie */
+body {
+    font-size: 1em;
+    font-family: 'lilita-one', sans-serif;
+}
+
+p {
+    text-align: justify;
+}
+
+h1 {
+    font-size: calc(10em / 3);
+    /* 50 sur Figma */
+}
+
+h2,
+h3 {
+    font-size: calc(7em / 3);
+    /* 35 sur Figma */
+}
+
+h4 {
+    font-size: calc(4em / 3);
+    /* 20 sur Figma */
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'etna-sans', sans-serif;
+    letter-spacing: .05em;
+}
+
+a {
+    color: black;
+    font-family: 'Lilita One', sans-serif;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Marges */
+section {
+    margin: 1em;
+    padding: 1em;
+}
+
+/* Couleurs */
+body {
+    color: black;
+    background-color: #4E555D;
+}
+
+/* Arrière-plan primaire */
+nav>li,
+footer>article,
+address div {
+    background-color: #4E555D;
+    color: white;
+}
+
+/* Arrière-plan secondaire */
+header,
+footer,
+section {
+    background-color: #EEE;
+}
+
+/* Arrière-plan de mise en valeur */
+header nav,
+footer>div {
+    background-color: #FF5722;
+}
+
+/* Header */
+header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 121.88px;
+    justify-content: space-evenly;
+}
+
+/* Logo Tabas'kho */
+header img {
+    width: 100px;
+    height: 100px;
+}
+
+h1,
+header img,
+header nav {
+    margin: 10px 50px;
+}
+
+/* ----------------------
+    - barre de recherche -
+    ----------------------*/
+
+/* Définition de l'ensemble de la barre de recherche
+    - ajustement à la barre
+    */
+input,
+input+div+div,
+h1+div,
+.search-input {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+/* Définition de la taille de la barre de recherche */
+h1+div {
+    max-width: 450px;
+}
+
+h1+div .search-input {
+    background: #EEE;
+    width: 100%;
+    border-radius: 5px;
+    position: relative;
+    box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
+}
+
+/* -- Définition de la barre de recherche --
+    - ajustement de la taille
+    */
+.search-input input {
+    height: 31px;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 0 60px 0 20px;
+    font-size: 18px;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-input.active input {
+    border-radius: 5px 5px 0 0;
+}
+
+.search-input input+div {
+    padding: 0;
+    opacity: 0;
+    pointer-events: none;
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+.search-input.active input+div {
+    padding: 10px 8px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* -- Définition de la liste de suggestions --
+    - liste sans puce
+    - ajustement de la position
+    */
+input+div li {
+    list-style: none;
+    padding: 8px 12px;
+    display: none;
+    width: 100%;
+    cursor: default;
+    border-radius: 3px;
+}
+
+.search-input.active input+div li {
+    display: block;
+}
+
+/* -- Définition de la liste de suggestions au survol --
+    - changement de la couleur de fond
+    */
+input+div>li:hover {
+    background: #FFF;
+}
+
+/* -- Définition du logo loupe --
+    - ajustement dans la barre de recherche
+    - Logo de couleur orange
+    - changement du curseur
+    */
+.search-input input+div+div {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 31px;
+    width: 31px;
+    text-align: center;
+    line-height: 34px;
+    font-size: 20px;
+    color: #FF5722;
+    cursor: pointer;
+}
+
+/* Nav dans le document - Header*/
+header nav {
+    width: 850px;
+    height: 81.25px;
+    margin: 20px 50px;
+    filter: drop-shadow(6px 6px 4px rgba(255, 87, 34, 0.50));
+}
+
+nav ul {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    vertical-align: center;
+    justify-content: space-between;
+    list-style: none;
+
+}
+
+nav ul li {
+    width: 100%;
+    margin: 15px 20px;
+    background-color: #4E555D;
+    background-size: 106.67px;
+    display: flex;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+/*apparence des bouton dans les navigations du nav*/
+nav ul a {
+    width: auto;
+    padding: 5px 10px;
+    color: #EEE;
+    text-decoration: none;
+    background-size: 106.67px;
+    background-color: #4E555D;
+}
+
+/* Modules */
+h2 {
+    background-color: #4E555D;
+    border-radius: 20px 20px 50px 50px;
+    color: #EEE;
+    display: block;
+    margin: 0 auto;
+    padding: 0 2em;
+    text-align: center;
+    width: calc(100% / 3);
+}
+
+h3 {
+    background-color: #4E555D;
+    color: #EEE;
+    padding: .125em .25em;
+    width: fit-content;
+    /* Pour que la couleur d'arrière-plan ne prenne pas toute la ligne */
+}
+
+main ul {
+    overflow-y: scroll;
+    /* Pour afficher une barre de défilement */
+    padding: 0;
+}
+
+main li {
+    background-color: #D9D9D9;
+    border: 3px #4E555D solid;
+    list-style: none;
+    margin: 1em;
+    padding: 0 .33em;
+}
+
+video {
+    border: 2px black;
+}
+
+time p {
+    font-size: calc(4em / 3);
+    font-weight: bold;
+}
+
+figure {
+    width: min-content;
+}
+
+figure,
+.bloc-encadre {
+    margin: 1em;
+    border: 3px #4E555D solid;
+    background-color: #D9D9D9;
+}
+
+figcaption,
+.bloc-encadre {
+    padding: .5em;
+}
+
+.bloc-principal {
+    border-left: 6em #FF5722 solid;
+}
+
+.bloc-encadre h4 {
+    text-decoration: underline;
+    margin: 0;
+}
+
+.corps-de-texte p {
+    text-indent: 1em;
+    line-height: 1.6em;
+}
+
+.corps-de-texte p::first-letter {
+    font-size: calc(5em / 3);
+    /* 25 sur Figma */
+}
+
+.lien-interpage {
+    float: right;
+    background-color: #4E555D;
+    color: #EEE;
+    padding: .6em .3em;
+    font-size: calc(5em / 3);
+    /* 25 sur Figma */
+}
+
+.lien-interpage:hover {
+    background-color: #EEE;
+    border: #4E555D 2px solid;
+    color: #4E555D;
+}
+
+.lien-bouton {
+    background-color: #D9D9D9;
+    border-radius: 50px;
+    border: 3px #4E555D solid;
+    display: inline-block;
+    font-size: 1.6em;
+    padding: 1em .5em;
+    text-align: center;
+}
+
+.lien-bouton:hover {
+    color: #4E555D;
+}
+
+/* Footer */
+footer {
+    align-items: center;
+    display: flex;
+    /* aligner à droite */
+    height: 100px;
+    justify-content: space-evenly;
+    margin-left: auto;
+    width: 89.14%;
+}
+
+address {
+    border-left: #FF5722 20px solid;
+    border-right: #FF5722 20px solid;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 70px;
+}
+
+address a {
+    color: lightblue;
+    font-size: calc(2em / 3);
+}
+
+address>div {
+    align-self: center;
+    border-radius: 10px;
+    font-style: normal;
+    height: 58px;
+    margin: 36px;
+    position: relative;
+    text-align: center;
+}
+
+address>span {
+    text-decoration-thickness: 1.5px;
+    /* épaisseur de l'undeline */
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+footer img {
+    height: 50px;
+    margin: 0 18.5px;
+    width: 50px;
+}
+
+/* Styles spécifiques aux pages */
+
+/* Page détail saison */
+/* Agencement */
+#page-detail-saison>div {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+#page-detail-saison aside {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+/* Série */
+#page-detail-saison #serie {
+    flex: 1;
+}
+
+#page-detail-saison #serie>div {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+#page-detail-saison #serie .lien-interpage {
+    float: right;
+}
+
+#page-detail-saison #serie img {
+    width: 30vw;
+}
+
+/* Informations */
+#page-detail-saison #informations article {
+    margin-bottom: 2em;
+}
+
+/* Chiffres */
+#page-detail-saison #chiffres>div {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+#page-detail-saison #chiffres>div>div {
+    background-color: #D9D9D9;
+    margin: 1em;
+    font-weight: bold;
+    font-size: 1.6em;
+    padding: 0 .5em;
+}
+
+#page-detail-saison #chiffres>div>div p {
+    text-align: center;
+}
+
+/* Acteurs */
+#page-detail-saison #acteurs {
+    flex: 0;
+}
+
+#page-detail-saison #acteurs li div {
+    display: none;
+}
+
+#page-detail-saison #acteurs li:hover div {
+    max-height: 10em;
+    display: block;
+}
+
+#page-detail-saison #acteurs img {
+    float: right;
+    height: 6em;
+}
+
+/* Épisodes */
+#page-detail-saison #episodes ul {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+
+#page-detail-saison #episodes li {
+    background-color: initial;
+    border: none;
+    height: 8em;
+    margin: 0;
+}
+
+#page-detail-saison #episodes img {
+    height: 6em;
+    margin-right: 1.5em;
+    width: 10%;
+}
+
+#page-detail-saison #episodes article {
+    background-color: #D9D9D9;
+    border-radius: 20px 50px 20px 50px;
+    border: 3px #4E555D solid;
+    display: inline-block;
+    padding: .5em;
+    width: 80%;
+}
+
+#page-detail-saison #episodes h4,
+#page-detail-saison #episodes p {
+    margin: 0;
+}
+
+#page-detail-saison #episodes time p {
+    text-align: right;
+}
+
+/* Pop-up */
+#overlay h2 {
+    font-size: 2em;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#overlay {
+    /* Rajoute un flou en arrière plan (ne fonctionne pas sur Firefox) */
+    backdrop-filter: blur(8px);
+    bottom: 0;
+    display: none;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+
+#overlay.open {
+    display: block;
+    z-index: 2;
+}
+
+#overlay>div {
+    background-color: #3E454D;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    border-radius: 1em;
+    box-shadow: .2em .2em .1em .1em black;
+    padding: 1em;
+    box-sizing: border-box;
+
+    transform: translate(-50%, -50%);
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    height: 30vh;
+    width: 40vw;
+}
+
+#overlay nav {
+    text-align: right;
+}
+
+#overlay nav a {
+    background-color: #D9D9D9;
+    padding: 10px;
+    border-radius: .5rem;
+    text-decoration: none;
+}
+
+#overlay .age {
+    background-color: #D9D9D9;
+
+    border-radius: 50px;
+    border: #FF5722 2px solid;
+
+    margin: 0 auto;
+    padding: 10px;
+
+    height: 3em;
+    width: 3em;
+}
+
+#overlay .age p {
+    text-align: center;
+}
+
+
+/**---------------------------------marius*----------------------------------------------/
+/* ----------------logo +16----------------*/
+#serie>h2+div {
+    display: flex;
+
+    background-color: #4E555D;
+    color: #EEE;
+
+    padding: 10px 4px;
+    border-radius: 50%;
+    float: right;
+
+}
+
+/* ----------------description----------------*/
+
+#page-the-last-of-us section>div {
+    display: flex;
+    padding: 1em;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+#serie>div div {
+    width: 50%;
+    max-height: 100%;
+    border: 2px solid #4E555D;
+    background-color: #D9D9D9;
+    font-weight: bolder;
+    margin: 0 1em;
+
+}
+#serie p{
+    padding: 0 0.7em ;
+}
+
+#serie>div p::first-letter {
+    font-size: 2em;
+
+}
+
+#page-the-last-of-us>div {
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+
+#serie {
+    width: 66%;
+    height: fit-content;
+}
+/* 
+#recommendation {
+    width: auto;
+
+} */
+#image_mobile{
+    visibility: hidden;
+    display: none;
+ 
+}
+#page-the-last-of-us img {
+    /* width: 80%;
+    height: 80%; */
+    object-fit: contain;
+    overflow: hidden;
+    width: 40vh;
+}
+
+
+
+#page-the-last-of-us h2 {
+    text-align: center;
+    margin: 1vh auto;
+
+}
+
+
+#page-the-last-of-us aside {
+    width: 34%;
+
+
+    margin-right: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    position: relative;
+}
+#saison{
+    height: 100%;
+}
+
+/* Bloc Catégorie */
+/* #saison:nth-child(2) {
+    height: 365.63px;
+    overflow: scroll;
+    position: absolute;
+    top: 600;
+    bottom: 0;
+} */
+
+#saison ul {
+    overflow:hidden;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    border-right: #4E555D 70px solid;
+}
+
+#saison:nth-child(1) ul li {
+    height:7vh;
+    width: 90%;
+    margin: 5px;
+
+    background-color: #D9D9D9;
+    border: #4E555D 3px solid;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* Bloc Récent */
+/* aside section:nth-child(3) { */
+    /* height: 388px; */
+/* } */
+/* 
+aside #recommendation img {
+    width: 122px;
+    height: 55px;
+    object-fit: cover;
+    border: #4E555D 3px solid;
+    margin: 10px 20px;
+}
+
+aside #recommendation:nth-child(3) div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+} */
+/* forme mobile    */
+@media screen and (max-width:960px) {
+    #page-the-last-of-us div {
+        flex-direction: column;
+    }
+
+    #page-the-last-of-us aside, #serie{
+        width: auto;
+    }
+
+    #page-the-last-of-us section>div {
+        display: flex;
+        flex-direction:column ;
+    }
+
+    #serie div div, #serie img{
+        width: 100%;
+        margin: 0;
+    }
+
+    #image_mobile{
+        visibility:visible;
+        display:unset;
+        border: 2px solid #4E555D;
+    }
+
+    #image_pc{
+        visibility: hidden;
+        display: none;
+    }
+
+
+}

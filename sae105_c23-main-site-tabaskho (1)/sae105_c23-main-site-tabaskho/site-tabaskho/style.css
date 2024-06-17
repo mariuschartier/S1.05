@@ -1,0 +1,898 @@
+/* Feuille de style Tabas'Kho */
+
+/* Polices */
+@font-face {
+    font-family: 'etna-sans';
+    src: url('fonts/etna-free-font-webfont.woff2') format('woff2'),
+        url('fonts/etna-free-font-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'lilita-one';
+    src: url('fonts/lilitaone-regular-webfont.woff2') format('woff2'),
+        url('fonts/lilitaone-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Généralités */
+:root {
+    /* Variable : facteur de taille des éléments */
+    /* Pourra être changée dans le media queries */
+    /* Exemple : font-size: calc(15 * var(--s)); -> représente une taille de 15 sur Figma */
+    --s: calc(1vw/15);
+    /* À utiliser pour : tout ce qui devrait changer de taille quand on zoome-dézoome */
+    /* C'est-à-dire : pas les marges ou les paddings */
+    /* À ne pas utiliser : quand on exprime des tailles relatives à la font-size de l'élément actuel -> utiliser em */
+}
+
+/* Typographie */
+    body {
+        font-size: calc(15 * var(--s));
+        font-family: 'lilita-one', sans-serif;
+    }
+
+    p {
+        text-align: left;
+    }
+
+    h1 {
+        font-size: calc(50 * var(--s));
+        text-align: center;
+    }
+
+    h1, h2, h3, h4 {
+        font-family: 'etna-sans', sans-serif;
+        letter-spacing: calc(1 * var(--s));
+        margin: 0;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    a:hover:not(footer a,#episodes a) {
+        text-decoration: underline;
+    }
+
+/* Marges */
+    main {
+        /* empeêcher le maring collapsing */
+        display: inline-block;
+    }
+    body, section, header, footer {
+        margin: 1em;
+    }
+    section {
+        padding: 1em;
+    }
+
+/* Couleurs */
+    body {
+        color: black;
+        background-color: #4E555D;
+    }
+
+    /* Arrière-plan primaire */
+    nav > li, footer > article, address div {
+        background-color: #4E555D;
+        color: #EEE;
+    }
+
+    /* Arrière-plan secondaire */
+    header, footer, section {
+        background-color: #EEE;
+    }
+
+    /* Arrière-plan de mise en valeur */
+    header nav, footer > div {
+        background-color: #FF5722;
+    }
+
+/* Header */
+header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: calc(121.88 * var(--s));
+}
+
+/* Logo Tabas'kho */
+header img {
+    width: calc(100 * var(--s));
+    height: calc(100 * var(--s));
+    margin: calc(11 * var(--s)) calc(44 * var(--s));
+}
+
+/* Barre de recherche */
+/* Définition de l'ensemble de la barre de recherche
+- ajustement à la barre
+*/
+input, input + div + div, h1 + div, .search-input {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+/* Définition de la taille de la barre de recherche */
+h1 + div{
+    max-width: calc(363 * var(--s));
+}
+
+.search-input {
+    background: #D9D9D9;
+    width: 100%;
+    border-radius: calc(5 * var(--s));
+    position: relative;
+    box-shadow: 0 calc(1 * var(--s)) calc(5 * var(--s)) calc(3 * var(--s)) rgba(0,0,0,0.12);
+}
+
+/* -- Définition de la barre de recherche --
+- ajustement de la taille
+*/
+.search-input input {
+    height: calc(31 * var(--s));
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: calc(5 * var(--s));
+    padding: 0 calc(60 * var(--s)) 0 calc(20 * var(--s));
+    font-size: calc(18 * var(--s));
+    box-shadow: 0 calc(1 * var(--s)) calc(5 * var(--s)) rgba(0,0,0,0.1);
+}
+
+.search-input.active input{
+    border-radius: calc(5 * var(--s)) calc(5 * var(--s)) 0 0;
+}
+
+.search-input input + div {
+    padding: 0;
+    opacity: 0;
+    pointer-events: none;
+    max-height: calc(280 * var(--s));
+    overflow-y: auto;
+}
+
+.search-input.active input + div {
+    padding: calc(10 * var(--s)) calc(8 * var(--s));
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* -- Définition de la liste de suggestions --
+- liste sans puce
+- ajustement de la position
+*/
+input + div li {
+    list-style: none;
+    padding: calc(8 * var(--s)) calc(12 * var(--s));
+    display: none;
+    cursor: default;
+    border-radius: calc(3 * var(--s));
+}
+
+.search-input.active input + div li {
+    display: block;
+}
+
+/* -- Définition de la liste de suggestions au survol --
+- changement de la couleur de fond
+*/
+input + div > li:hover {
+    background: #EEE;
+}
+
+/* -- Définition du logo loupe --
+- ajustement dans la barre de recherche
+- Logo de couleur orange
+- changement du curseur
+*/
+.search-input input + div + div {
+    position: absolute;
+    right: 1em;
+    top: .5em;
+    color: #FF5722;
+    cursor: pointer;
+}
+
+/* Nav dans le document - Header*/
+header nav {
+    margin: calc(20.31 * var(--s)) calc(50 * var(--s));
+    filter: drop-shadow(calc(6 * var(--s)) calc(6 * var(--s)) calc(4 * var(--s)) rgba(255, 87, 34, 0.50));
+    overflow-x: auto;
+}
+
+header nav ul {
+    height: 100%;
+    font-size: calc(24 * var(--s));
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    list-style: none;
+    width: max-content;
+}
+
+header nav ul li {
+    height: max-content;
+    margin: 0 .25em;
+    padding: 0 1em;
+    background-color: #4E555D;
+}
+
+/* Apparence des bouton dans les navigations du nav */
+header nav ul a {
+    color: #EEE;
+    text-decoration: none;
+}
+
+/* Modules */
+html {
+    scroll-behavior: smooth;
+}
+
+h2 {
+    font-size: calc(35 * var(--s));
+    background-color: #4E555D;
+    border-radius: calc(20 * var(--s)) calc(20 * var(--s)) calc(50 * var(--s)) calc(50 * var(--s));
+    color: #EEE;
+    margin: 0 auto;
+    padding: 0 2em;
+    text-align: center;
+    width: fit-content;
+}
+
+h3 {
+    font-size: calc(30 * var(--s));
+    background-color: #4E555D;
+    color: #EEE;
+    padding: .125em .25em;
+    width: fit-content; /* Pour que la couleur d'arrière-plan ne prenne pas toute la ligne */
+}
+
+h4 {
+    font-size: calc(20 * var(--s));
+    text-decoration: underline;
+    margin: 0;
+}
+main > div {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+main aside {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+main ul {
+    padding: 0 2em;
+    border-right: calc(75 * var(--s)) #4E555D solid;
+}
+
+main li {
+    background-color: #D9D9D9;
+    border: calc(3 * var(--s)) #4E555D solid;
+    list-style: none;
+    margin: 1em;
+}
+
+video {
+    border: calc(2 * var(--s)) black;
+}
+
+time {
+    font-size: calc(20 * var(--s));
+    font-weight: bold;
+}
+
+figure {
+    margin: 0;
+    width: min-content;
+}
+
+figure, .bloc-encadre {
+    border: calc(3 * var(--s)) #4E555D solid;
+    background-color: #D9D9D9;
+}
+
+figcaption, .bloc-encadre {
+    padding: .5em;
+}
+
+.bloc-principal {
+    margin: 1em;
+    padding-left: calc(72 * var(--s));
+    border-left: calc(89 * var(--s)) #FF5722 solid;
+}
+
+.corps-de-texte p {
+    text-indent: 1em;
+    line-height: calc(1ex / .32);
+}
+
+.corps-de-texte p::first-letter {
+    font-size: calc(25 * var(--s));
+}
+
+.lien-retour {
+    float: right;
+    background-color: #4E555D;
+    color: #EEE;
+    padding: .6em .3em;
+    font-size: calc(24 * var(--s));
+}
+
+.lien-retour:hover {
+    background-color: #EEE;
+    border: #4E555D calc(2 * var(--s)) solid;
+    color: #4E555D;
+}
+
+.zone-boutons {
+    text-align: right;
+}
+.zone-boutons > a {
+    background-color: #D9D9D9;
+    border-radius: calc(50 * var(--s));
+    border: calc(3 * var(--s)) #4E555D solid;
+    display: inline-block;
+    font-size: calc(15 * var(--s));
+    padding: 1em .5em;
+    text-align: center;
+}
+.zone-boutons > a:hover {
+    color: #4E555D;
+}
+
+/* Footer */
+footer {
+    padding: calc(12 * var(--s)) calc(20 * var(--s));
+    margin-left: auto;
+    display: flex;
+    flex-flow: row nowrap;
+    width: max-content;
+}
+
+address {
+    border-left: #FF5722 calc(20 * var(--s)) solid;
+    border-right: #FF5722 calc(20 * var(--s)) solid;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+address a {
+    color: lightblue;
+    font-size: calc(10 * var(--s));
+}
+
+address > div {
+    border-radius: calc(10 * var(--s));
+    font-style: normal;
+    padding: 1em;
+    margin: 0 calc(36 * var(--s));
+    position: relative;
+    text-align: center;
+}
+
+address > span {
+    text-decoration-thickness: calc(1.5 * var(--s)); /* épaisseur de l'undeline */
+    text-decoration: underline;
+    text-underline-offset: calc(2 * var(--s));
+}
+
+footer nav {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+footer img {
+    margin: 0 calc(18.5 * var(--s));
+    height: calc(50 * var(--s));
+    width: calc(50 * var(--s));
+}
+
+/* Styles spécifiques aux pages */
+
+/* Page détail saison */
+    /* Série */
+        #page-detail-saison #serie > div {
+            display: flex;
+            flex-flow: row nowrap;
+        }
+
+        #page-detail-saison #serie > div > * {
+            margin-right: calc(72 * var(--s));
+        }
+
+        #page-detail-saison #serie img {
+            width: calc(233 * var(--s));
+        }
+
+    /* Informations */
+        #page-detail-saison #informations {
+            margin-bottom: calc(27 * var(--s));
+        }
+        #page-detail-saison #informations p {
+            margin: 0;
+        }
+
+    /* Chiffres */
+        #page-detail-saison #chiffres > div {
+            display: flex;
+            flex-flow: row nowrap;
+        }
+
+        #page-detail-saison #chiffres > div > div {
+            background-color: #D9D9D9;
+            margin: .5em;
+            width: max-content;
+            font-weight: bold;
+            font-size: calc(24 * var(--s));
+            padding: 0 .5em;
+            text-align: center;
+        }
+
+        #page-detail-saison #chiffres > div > div p {
+            margin: 0;
+        }
+
+    /* Acteurs */
+        #page-detail-saison #acteurs {
+            overflow-y: auto;
+            max-height: calc(510 * var(--s));
+        }
+        #page-detail-saison #acteurs li p {
+            padding: 0 .5em;
+        }
+        #page-detail-saison #acteurs li div {
+            position: relative;
+            display: none;
+        }
+
+        #page-detail-saison #acteurs li:hover div {
+            max-height: calc(500 * var(--s));
+            display: block;
+        }
+
+        #page-detail-saison #acteurs img {
+            position: absolute;
+            bottom: 0;
+            right: 1em;
+            border: calc(2 * var(--s)) #4E555D solid;
+            height: calc(100 * var(--s));
+            width: calc(75 * var(--s));
+            object-fit: cover;
+        }
+
+    /* Épisodes */
+        #page-detail-saison #episodes {
+            max-height: calc(463 * var(--s));
+            overflow-y: auto;
+        }
+        #page-detail-saison #episodes li {
+            background-color: initial;
+            border: none;
+            margin: calc(13 * var(--s)) 0;
+            height: calc(90 * var(--s));
+            display: flex;
+            flex-flow: row nowrap;
+        }
+        
+        #page-detail-saison #episodes img {
+            flex-shrink: 0;
+            flex-basis: calc(228 * var(--s));
+            margin-right : calc(17 * var(--s));
+            object-fit: cover;
+        }
+
+        #page-detail-saison #episodes article {
+            flex-grow: 1;
+            background-color: #D9D9D9;
+            border-radius: calc(20 * var(--s)) calc(50 * var(--s)) calc(20 * var(--s)) calc(50 * var(--s));
+            border: calc(3 * var(--s)) #4E555D solid;
+            padding: .5em;
+            position: relative;
+        }
+
+        #page-detail-saison #episodes h4 {
+            margin: 0 calc(25 * var(--s));
+        }
+
+        #page-detail-saison #episodes p {
+            color: #4E555D;
+            margin: 0 calc(77 * var(--s));
+        }
+
+        #page-detail-saison #episodes time {
+            position: absolute;
+            margin: 0 .5em;
+            bottom: 0;
+            right: 0;
+        }
+    
+    /* Pop-up */
+        #overlay {
+            /* Rajoute un flou en arrière plan (ne fonctionne pas sur Firefox) */
+            backdrop-filter: blur(calc(8 * var(--s)));
+            bottom: 0;
+            display: none;
+            left: 0;
+            position: fixed;
+            right: 0;
+            top: 0;
+            z-index: -1;
+        }
+        #overlay.open {
+            display: block;
+            z-index: 2;
+        }
+        
+        /* Panneau */
+        #overlay > div {
+            /* Gris avec accent plus sombre pour différencier des couleurs de la page */
+            background-color:  #3e454dDD;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            
+            border-radius: 1em;
+            filter: drop-shadow(calc(6 * var(--s)) calc(6 * var(--s)) calc(4 * var(--s)) #4e555d);
+            padding: 1em;
+            box-sizing: border-box;
+            
+            transform: translate(-50%,-50%);
+
+            position: absolute;
+            left: 50%;
+            top: 50%;
+        }
+
+        /* Navigation */
+        #overlay nav {
+            text-align: right;
+        }
+
+        #overlay nav a {
+            background-color: #D9D9D9;
+            padding: 10px;
+            border-radius: .5rem;
+            text-decoration: none;
+        }
+
+        /* Pictogramme age */
+        #overlay .age {
+            background-color: #D9D9D9;
+
+            border-radius: 50%;
+            border: #FF5722 calc(5 * var(--s)) solid;
+
+            align-self: center;
+            padding: 1em;
+
+            font-size: calc(25 * var(--s));
+            text-align: center;
+        }
+
+/* Page d'acceuil */
+    /* Bloc Principale */
+        #page-index div > section img{
+            margin: 3vh 5vh;
+            width: 30vh;
+            height: 14vh;
+            object-fit: cover;
+        }
+
+    /* Aside */
+        /* Ajancement */
+        #page-index aside {
+            width: 100%;
+        }
+
+        /* Série Recommander */
+        #page-index aside section:nth-child(1){
+            height: fit-content;
+            width: auto;
+        }
+        
+        #page-index aside section:nth-child(1) img{
+            width: 100%;
+            height: 61px;
+            object-fit: cover;
+            margin: 0;
+        }
+        
+        #page-index aside section:nth-child(1) div {
+            margin: 0;
+            padding-top: calc(10 * var(--s));;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+        
+        /* Catégorie */
+        #page-index aside section:nth-child(2){
+            height: 22.852em;
+        }
+
+        /* scroll liste */
+        #page-index aside section:nth-child(2) ul{
+            padding: 0;
+            height: 19em;
+            overflow-x: scroll;
+        }
+
+        /* Sortie Récente */
+        #page-index aside section:nth-child(3){
+            height: fit-content;
+        }
+        
+        #page-index aside section:nth-child(3) img{
+            width: 122px;
+            height: 55px;
+            object-fit: cover;
+            border: #4E555D 3px solid;
+            margin: 10px 20px;
+        }
+        
+        #page-index aside section:nth-child(3) div {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+/* Page série */
+
+    /* ----------------logo +16----------------*/
+    #page-the-last-of-us #serie > h2 + div {
+        display: flex;
+
+        background-color: #4E555D;
+        color: #EEE;
+
+        padding: 10px 4px;
+        border-radius: 50%;
+        float: right;
+
+    }
+
+    /* ----------------description----------------*/
+
+    #page-the-last-of-us section > div {
+        display: flex;
+        padding: 1em;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+    #page-the-last-of-us #serie > div div {
+        width: 50%;
+        max-height: 100%;
+        border: 2px solid #4E555D;
+        background-color: #D9D9D9;
+        font-weight: bolder;
+        margin: 0 1em;
+
+    }
+
+    #page-the-last-of-us #serie p {
+        padding: 0 0.7em;
+    }
+
+    #page-the-last-of-us #serie > div p::first-letter {
+        font-size: 2em;
+
+    }
+
+    #page-the-last-of-us > div {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #page-the-last-of-us #serie {
+        width: 66%;
+        height: fit-content;
+    }
+
+
+    #page-the-last-of-us #image_mobile {
+        visibility: hidden;
+        display: none;
+
+    }
+
+    #page-the-last-of-us img {
+
+        object-fit: contain;
+        overflow: hidden;
+        width: 40vh;
+    }
+
+    #page-the-last-of-us h2 {
+        text-align: center;
+        margin: 1vh auto;
+
+    }
+
+    #page-the-last-of-us aside {
+        width: 34%;
+
+
+        margin-right: 0;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        position: relative;
+    }
+
+    #page-the-last-of-us #saison {
+        height: 100%;
+    }
+
+    #page-the-last-of-us #saison ul {
+    overflow:hidden;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+  
+    }
+    #page-the-last-of-us #saison:nth-child(1) ul li{
+        border: none;
+        background-color: #EEE;
+    }
+    #page-the-last-of-us #saison:nth-child(1) ul li a{
+    height:7vh;
+    width: 90%;
+    
+    background-color: #D9D9D9;
+    border: #4E555D 3px solid;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    
+
+/* Media queries (responsivité) */
+/* Point de bascule : moyenne entre PC (min 1280px) et portable (max 428px) */
+/* (1280+428)/2 = 854 */
+@media screen and (max-width: 854px) {
+    header, main, footer {
+        max-width: 100%;
+    }
+    :root {
+        --s: calc(2vw/15);
+    }
+
+    /* Suppression des bordures décoratives */
+    .bloc-principal {
+        border-left: none;
+    }
+
+    main ul {
+        border-right: none;
+    }
+
+    /* Header */
+        header{
+            flex-wrap: wrap;
+            height: auto;
+        }
+        header nav{
+            background-color: #FF5722;
+            padding: 1em;
+            margin: 0;
+            width: 100%;
+            filter: none;
+        }
+
+    /* Footer */
+        /* TODO */
+    
+    /* Page série */
+        #page-the-last-of-us div {
+            flex-direction: column;
+        }
+
+        #page-the-last-of-us aside, #page-the-last-of-us #serie {
+            width: auto;
+        }
+
+        #page-the-last-of-us section > div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #page-the-last-of-us #serie div div, #page-the-last-of-us #serie img {
+            width: 100%;
+            margin: 0;
+        }
+
+        #page-the-last-of-us #image_mobile {
+            visibility: visible;
+            display: unset;
+            border: 2px solid #4E555D;
+        }
+
+        #page-the-last-of-us #image_pc {
+            visibility: hidden;
+            display: none;
+        }
+    
+    /* Page saison */
+        /* Masquer le bloc informations */
+        #page-detail-saison #chiffres {
+            display: none;
+        }
+
+        #page-detail-saison > div {
+            /* Retirer le flex */
+            display: unset;
+        }
+    /* Page d'acceuil */
+        #page-index > div{
+            flex-direction: column;
+        }
+
+        /*bloc principale*/
+        #page-index #enAvant div {
+            padding: 0;
+        }
+
+        #page-index #enAvant div img{
+            width: calc(200 * var(--s));
+            height: calc(100 * var(--s));
+            padding: 0;
+        }
+
+        /*Recommandé*/
+        #page-index aside section:nth-child(1) img{
+            width: calc(180 * var(--s));
+            height: calc(75 * var(--s));
+        }
+
+        /* Bloc Catégorie*/
+        #page-index aside section:nth-child(2){
+            order: 3;
+        }
+
+        #page-index aside section:nth-child(2) ul{
+            padding-left: calc(30 * var(--s));
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        #page-index aside section:nth-child(2) li{
+            width: calc(206 * var(--s));
+            height: calc(25 * var(--s));
+        }
+
+        /*Sortie Récente*/
+        #page-index aside section:nth-child(3){
+            order: 2;
+        }
+
+        #page-index aside section:nth-child(3) img{
+            order: 2;
+            width: calc(206 * var(--s));
+            height: calc(80 * var(--s));
+        }
+
+        .containt {
+            width: 1200px;
+        }
+}

@@ -1,0 +1,427 @@
+/* Typographie */
+
+html {
+    scroll-behavior: smooth;
+}
+
+p {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.6em;
+    text-align: justify;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Etna Sans', sans-serif;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 2.5em;
+    width: 65vh;
+    height: 60px;
+    text-align: center;
+    color: #EEE;
+    background-color: #4E555D;
+    border-radius: 20px 20px 50px 50px;
+    margin: 1vh auto;
+}
+
+h3 {
+    font-size: 2em;
+    color: #EEE;
+    background-color: #4E555D;
+    width: fit-content;
+    padding: 0 10px;
+    margin: 10px 0 0 10px;
+}
+
+h4 {
+    font-size: 1.5em;
+}
+
+a{
+    text-decoration: none;
+    color: #EEE;
+}
+
+/* Couleurs */
+
+body {
+    color: black;
+    background-color: #4E555D;
+}
+
+/* Arrière-plan primaire */
+nav > li, footer > article, address div {
+    background-color: #4E555D;
+    color: white;
+}
+
+/* Arrière-plan secondaire */
+header, footer, section {
+    background-color: #EEE;
+}
+
+/* Arrière-plan de mise en valeur */
+header nav, footer > div {
+    background-color: #FF5722;
+}
+
+/*--------------header-------------*/
+
+header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 121.88px;
+    justify-content: space-evenly;
+}
+
+/* Logo Tabas'kho */
+header img {
+    width: 100px;
+    height: 100px;
+}
+
+h1, header img, header nav {
+    margin: 10px 50px;
+}
+
+/* ----------------------
+   - barre de recherche -
+   ----------------------*/
+
+/* Définition de l'ensemble de la barre de recherche
+- ajustement à la barre
+*/
+input, input+div+div, h1+div, .search-input{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+/* Définition de la taille de la barre de recherche */
+h1+div{
+    max-width: 450px;
+}
+  
+h1+div .search-input{
+    background: #EEE;
+    width: 100%;
+    border-radius: 5px;
+    position: relative;
+    box-shadow: 0px 1px 5px 3px rgba(0,0,0,0.12);
+}
+  
+/* -- Définition de la barre de recherche --
+- ajustement de la taille
+*/
+.search-input input{
+    height: 31px;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 0 60px 0 20px;
+    font-size: 18px;
+    box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
+}
+  
+.search-input.active input{
+    border-radius: 5px 5px 0 0;
+}
+  
+.search-input input+div{
+    padding: 0;
+    opacity: 0;
+    pointer-events: none;
+    max-height: 280px;
+    overflow-y: auto;
+}
+  
+.search-input.active input+div{
+    padding: 10px 8px;
+    opacity: 1;
+    pointer-events: auto;
+}
+  
+/* -- Définition de la liste de suggestions --
+- liste sans puce
+- ajustement de la position
+*/
+input+div li{
+    list-style: none;
+    padding: 8px 12px;
+    display: none;
+    width: 100%;
+    cursor: default;
+    border-radius: 3px;
+}
+  
+.search-input.active input+div li{
+    display: block;
+}
+  
+/* -- Définition de la liste de suggestions au survol --
+- changement de la couleur de fond
+*/
+input+div > li:hover{
+    background: #FFF;
+}
+  
+/* -- Définition du logo loupe --
+- ajustement dans la barre de recherche 
+- Logo de couleur orange
+- changement du curseur
+*/
+.search-input input+div+div{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 31px;
+    width: 31px;
+    text-align: center;
+    line-height: 34px;
+    font-size: 20px;
+    color: #FF5722;
+    cursor: pointer;
+}
+
+/* Nav dans le document - Header*/
+header nav {
+    width: 850px;
+    height: 81.25px;
+    margin: 20px 50px;
+    filter: drop-shadow(6px 6px 4px rgba(255, 87, 34, 0.50));
+}
+
+nav ul {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    vertical-align: center;
+    justify-content: space-between;
+    list-style: none;
+
+}
+
+nav ul li {
+    width: 100%;
+    margin: 15px 20px;
+    background-color: #4E555D;
+    background-size: 106.67px;
+    display: flex;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+/*apparence des bouton dans les navigations du nav*/
+nav ul a {
+    width:auto;
+    padding: 5px 10px;
+    color: #EEE;
+    text-decoration: none;
+    background-size: 106.67px;
+    background-color: #4E555D;
+}
+
+/*----------------------FIN-HEADER-------------------------------*/
+
+/*----------------------MAIN-------------------------------*/
+main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin: 4.4vh 2vh;
+}
+
+main section {
+    height: fit-content;
+}
+
+/* Bloc Série en avant */
+main section:not(aside section){
+    width: 117.8vh;
+    padding: 3.1vh;
+    padding-left: 11.1vh;
+}
+
+main section:first-child:not(aside section) img{
+    margin: 3vh 5vh;
+    width: 35vh;
+    height: 14vh;
+    object-fit: cover;
+}
+
+main article:not(aside article){
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-left: #FF5722 89px solid;
+}
+
+aside {
+    width: 29.8609375%;
+    margin-left: 34px;
+    margin-right: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+aside section {
+    margin: 0 0 25px 0;
+}
+
+/* Bloc Recommander */
+aside section:nth-child(1){
+    height: 15%;
+    width: auto;
+}
+
+aside section:nth-child(1) img{
+    width: 100%;
+    height: 61px;
+    object-fit: cover;
+    margin: 0;
+}
+
+aside article {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+/* Bloc Catégorie */
+aside section:nth-child(2){
+    height: 365.63px;
+    overflow: scroll;
+}
+
+aside ul {
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    border-right: #4E555D 70px solid;
+}
+
+aside section:nth-child(2) ul li{
+    height: 40px;
+    width: 90%;
+    margin: 5px;
+    align-content: center;
+    background-color: #D9D9D9;
+    border: #4E555D 3px solid;
+    list-style: none;
+}
+
+aside a{
+    color: black;
+}
+
+/* Bloc Récent */
+aside section:nth-child(3){
+    height: 388px;
+}
+
+aside section:nth-child(3) img{
+    width: 122px;
+    height: 55px;
+    object-fit: cover;
+    border: #4E555D 3px solid;
+    margin: 10px 20px;
+}
+
+aside section:nth-child(3) div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/**********
+ * Footer *
+ **********/
+
+/* Dimensions :
+Largeur footer : 1141/1280 = 89.14%
+Hateur footer : 100
+Largeur séparateur : 20/1141 = 6.66%
+Hauteur séparateur : 76/100 = 76%
+Hauteur bloc : 58%
+*/
+
+footer {
+    height: 100px;
+    margin-left: 139px; /* aligner à droite */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-style: normal;
+}
+
+/* Contact */
+address {
+    height: 70px;
+    font-size: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    border-left: #FF5722 20px solid;
+    border-right: #FF5722 20px solid;
+}
+
+address div{
+    height: 58px;
+    margin: 36px;
+    font-size: 1.5em;
+    font-style: normal;
+    text-align: center;
+    align-self: center;
+    position: relative;
+    border-radius: 10px;
+}
+
+address span{
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    /* Epaisseur de l'undeline */
+    text-decoration-thickness: 1.5px;
+}
+/* Navigation */
+
+footer img {
+    margin: 0 18.5px;
+    height: 50px;
+    width: 50px;
+}
+
+/*----------------------MEDIA-QUERY-------------------------------*/
+
+@media screen and (width <= 1000px) {
+    main {
+        flex-direction: column;
+    }
+    aside {
+        width: 90%;
+    }
+    aside section:nth-child(1) {
+        width: 100%;
+        order: 3;
+    }
+}
